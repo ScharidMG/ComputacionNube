@@ -35,11 +35,11 @@ Responde brevemente a lo siguiente en tu informe[cite: 1]:
    El problema es que el bucket estaría guardando el archivo que describe su propia existencia: el .tfstate le dice a Terraform qué recursos administra, y si el bucket fuera uno de esos recursos, estaría intentando controlar el lugar donde vive su propio control. Si alguien corriera terraform destroy con el bucket declarado en main.tf, Terraform llegaría en algún punto del proceso a intentar borrar el bucket mientras todavía necesita escribir en él el resultado del propio destroy. Eso podría fallar porque el bucket no estaría vacío en ese instante, o peor, podría borrarlo y perder el registro de que la operación terminó bien, dejando el estado inconsistente. Por eso el bucket se crea aparte con gcloud: necesita existir antes de que Terraform tenga dónde guardar algo, y sobrevivir después de cualquier destroy.
 
 3. **Cálculo de costos y conservación del bucket:**
-   Costo mensual estimado de una instancia e2-micro (24/7):
+- Costo mensual estimado de una instancia e2-micro (24/7):
 Una instancia e2-micro en la región us-central1 encendida las 730 horas del mes cuesta aproximadamente $7.11 USD/mes (sin contar el disco).
 
-Costo por haberla usado solo unas horas hoy:
+- Costo por haberla usado solo unas horas hoy:
 El precio por hora de una e2-micro es de aproximadamente $0.0097 USD/hora (menos de 1 centavo de dólar por hora)
 
-Costo del bucket de Cloud Storage y motivo de conservación:
+- Costo del bucket de Cloud Storage y motivo de conservación:
 El almacenamiento estándar en Cloud Storage en us-central1 cuesta $0.02 USD por GB/mes
