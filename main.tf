@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "google" {
-  project = "<computanube>"
+  project = "computanube"
   region  = "us-central1"
   zone    = "us-central1-a"
 }
