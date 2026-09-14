@@ -7,7 +7,7 @@ terraform {
   }
 
     backend "gcs" {
-    bucket = "tfstate-<ID-DEL-PROYECTO>"
+    bucket = "tfstate-computanube"
     prefix = "practica-2"
   }
 }
